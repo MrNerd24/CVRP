@@ -1,6 +1,7 @@
 package CVRP.utils;
 
 import java.lang.reflect.Array;
+import java.util.Iterator;
 
 public class TLArrayList<T> {
     
@@ -210,6 +211,20 @@ public class TLArrayList<T> {
             }
         }
     }
-
+    
+    public static void sort(TLArrayList<Comparable> list) {
+        
+    }
+    
+    public static void shuffle(TLArrayList<Object> list) {
+        TLRandom random = new TLRandom();
+        for (int i = list.list.length-1; i >= 0; i--) {
+            int randomIndex = random.nextInt(i);
+            Object apu = list.list[randomIndex];
+            list.list[randomIndex] = list.list[i];
+            list.list[i] = apu;
+        }
+    }
+    
     
 }
