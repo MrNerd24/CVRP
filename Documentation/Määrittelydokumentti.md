@@ -7,3 +7,7 @@ Ongelma ratkaistaan geneettisellä algoritmilla, missä alussa luodaan monta täysi
 Tavat ratkaista ongelma parantuvat joka generaatiolla, ja jossain vaiheessa pitäisi löytyä niin hyvä tapa että sitä ei voida enään juurinkaan parantaa.
 
 Jotta voidaan välttää algoritmin juuttumista lokaaliin maksimiin, voidaan tapoja myös järjestää sen mukaan kuinka paljon ne eroavat vanhemmistaan. Tällä tavalla globaali maksimi on helpompi löytää alussa. Loppuakohden erillaisuuden tärkeyttä voidaan laskea, jolloin kaikki generaatiot toivottavasti jäävät paikoilleen globaaliin maksimiin.
+
+Tavoitteena on, että käyttäjä pystyy itse piirtämään pisteet tai generoimaan randomeja pisteitä. Sitten hän luo jonkin määrän generaatioita ja lopuksi näkee parhaimman polun.
+
+Algoritmi ei tule suoriutumaan suuresta generaatio tai paikka määrästä ihan silmänräpäyksessä. Mutta se on parempi kuin bruteforce.

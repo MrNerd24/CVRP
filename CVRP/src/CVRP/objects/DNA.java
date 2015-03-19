@@ -128,4 +128,11 @@ public class DNA {
         }
         return answer;
     }
+    
+    public DNA crossOver(DNA other) {
+        
+        
+        
+        return null;
+    }
 }
