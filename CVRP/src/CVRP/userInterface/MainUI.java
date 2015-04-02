@@ -5,10 +5,17 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+/**
+ *
+ * @author Juuso
+ */
 public class MainUI implements Runnable{
     
     private JFrame frame;
 
+    /**
+     *
+     */
     public MainUI() {
         
     }

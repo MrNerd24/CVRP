@@ -1,14 +1,21 @@
 package CVRP.objects;
 
+/**
+ * This class contains information of a packet.
+ * @author Juuso
+ */
 public class Packet {
     private int id;
     private int weight;
-    private Location destination;
 
-    public Packet(int id, int weight, Location destination) {
+    /**
+     * Creates a new packet
+     * @param id Packet id
+     * @param weight packet's weight.
+     */
+    public Packet(int id, int weight) {
         this.id = id;
         this.weight = weight;
-        this.destination = destination;
     }
 
     public int getId() {
@@ -19,16 +26,9 @@ public class Packet {
         return weight;
     }
 
-    public Location getDestination() {
-        return destination;
-    }
-
     public void setWeight(int weight) {
         this.weight = weight;
     }
 
-    public void setDestination(Location destination) {
-        this.destination = destination;
-    }
     
 }

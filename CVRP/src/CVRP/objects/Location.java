@@ -2,12 +2,22 @@ package CVRP.objects;
 
 import CVRP.utils.TLArrayList;
 
+/**
+ * This class holds a location used in the problem. There is also a list of packets that are for this location.
+ * @author Juuso
+ */
 public class Location {
     private int id;
     private int x;
     private int y;
     private TLArrayList<Packet> packets;
 
+    /**
+     * Creates a new location.
+     * @param id Location id.
+     * @param x X coordinate.
+     * @param y Y coordinate.
+     */
     public Location(int id, int x, int y) {
         this.id = id;
         this.x = x;
@@ -27,6 +37,10 @@ public class Location {
         return y;
     }
 
+    /**
+     * Returns the list of packets that should be delivered to this location.
+     * @return Returns list of packets.
+     */
     public TLArrayList<Packet> getPackets() {
         return packets;
     }
@@ -39,10 +53,50 @@ public class Location {
         this.y = y;
     }
     
+    /**
+     * Calculates the distance between this and some other location.
+     * @param o The other location.
+     * @return The distance between the locations.
+     */
     public double distance(Location o) {
+        if (o == null) {
+            throw new IllegalArgumentException("the other location was null.");
+        }
         return Math.sqrt(Math.pow(this.x - o.x, 2) + Math.pow(this.y - o.y, 2));
         
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + this.id;
+        hash = 97 * hash + this.x;
+        hash = 97 * hash + this.y;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Location other = (Location) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.x != other.x) {
+            return false;
+        }
+        if (this.y != other.y) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
     
 }

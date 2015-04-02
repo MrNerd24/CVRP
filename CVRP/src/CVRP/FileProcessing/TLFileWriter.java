@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- *
+ * This class writes into a file inside the hardcoded savefolder.
  * @author Juuso
  */
 public class TLFileWriter {
@@ -25,6 +25,12 @@ public class TLFileWriter {
     private final String path = "CVRP_saves/";
     private String folder;
 
+    /**
+     * Constructs the class.
+     * @param fileName Name for the file that is being written into.
+     * @param folder Folder where the file is or will be created
+     * @param append True if the program should append to a existing file. Otherwise it will write a new file.
+     */
     public TLFileWriter(String fileName, String folder, boolean append) {
         this.fileName = fileName;
         this.folder = folder;
@@ -43,23 +49,23 @@ public class TLFileWriter {
         return fileName;
     }
 
-
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
 
-
     public boolean isAppend() {
         return append;
     }
-
 
     public void setAppend(boolean append) {
         this.append = append;
 
     }
 
-
+    /**
+     * Writes to the file.
+     * @param lines Lines that are to be written.
+     */
     public void write(TLArrayList<String> lines) {
         createFileWriter();
         try {

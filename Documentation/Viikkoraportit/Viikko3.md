@@ -1,0 +1,5 @@
+**Viikko 3**
+
+Edellisillä viikoilla ohjelmoin algoritmin mahdollisimman nopeasti. Kolmannella viikolla aloitin koodin testauksen. Testauksessa kävi ilmi monta erillaista bugia, jolloin paljon aikaa kului debuggaukseen ja korjaamiseen. Lopuksi sain DNA:n metodit kuten mutaatiot ja crossoverit toimimaan. Koodi ei kuitenkaan viikon lopuksi ollut vielä toimivaa.
+
+Tämä viikko siis kului testaukseen ja korjaamiseen, jolloin tietenkin taidot kyseisissä aiheissa paranivat. Opin käyttämään paremmin esimerkiksi breakpointtien condition toiminnallisuutta. Eniten vaikeuksia debuggauksessa tuotti ohjelman sattumanvarainen luonne ja suuret työmäärät, hyvin usein ohjelmaa piti debuggaa useaan kertaan ennen kuin bugi ilmestyi. Tätä varten loin myös ns. noErrorsTestejä, jotka tekivät sattumanvaraisia toimintoja vaikkapa tuhat kertaa. Ja testi hyväksyttiin jos mitään erroreita ei tapahtunut. Näistä testeistä oli suurta hyötyä kun koodin virheitä alkoi metsästämään.
