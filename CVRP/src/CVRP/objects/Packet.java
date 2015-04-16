@@ -17,6 +17,12 @@ public class Packet {
         this.id = id;
         this.weight = weight;
     }
+    
+     public Packet(String constructorString) {
+        String[] values = constructorString.split("£");
+        this.id = Integer.parseInt(values[1]);
+        this.weight = Integer.parseInt(values[2]);
+     }
 
     public int getId() {
         return id;
@@ -28,6 +34,10 @@ public class Packet {
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+    
+    public String getConstructorString() {
+        return "£" + this.id + "£" + this.weight;
     }
 
     

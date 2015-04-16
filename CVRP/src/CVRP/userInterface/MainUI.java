@@ -1,5 +1,6 @@
 package CVRP.userInterface;
 
+import CVRP.userInterface.listeners.MainPanelSizeListener;
 import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -36,7 +37,11 @@ public class MainUI implements Runnable{
     }
 
     private void createComponents(Container contentPane) {
-        
+        MainPanel main = new MainPanel(1000, 800, 0, 0);
+        main.updateBounds();
+        main.createContents();
+        main.addComponentListener(new MainPanelSizeListener(main));
+        contentPane.add(main);
     }
     
 }

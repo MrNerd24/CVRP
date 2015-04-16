@@ -1,6 +1,7 @@
 package CVRP.objects;
 
 import CVRP.utils.TLArrayList;
+import java.util.Objects;
 
 /**
  * This class holds a location used in the problem. There is also a list of packets that are for this location.
@@ -11,6 +12,7 @@ public class Location {
     private int x;
     private int y;
     private TLArrayList<Packet> packets;
+    private String name;
 
     /**
      * Creates a new location.
@@ -22,7 +24,16 @@ public class Location {
         this.id = id;
         this.x = x;
         this.y = y;
+        this.name = "Location" + id;
         packets = new TLArrayList<>();
+    }
+    
+    public Location(String constructorString) {
+        String[] values = constructorString.split("§");
+        this.name = values[1];
+        this.id = Integer.parseInt(values[2]);
+        this.x = Integer.parseInt(values[3]);
+        this.y = Integer.parseInt(values[4]);
     }
 
     public int getId() {
@@ -68,10 +79,11 @@ public class Location {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + this.id;
-        hash = 97 * hash + this.x;
-        hash = 97 * hash + this.y;
+        int hash = 7;
+        hash = 19 * hash + this.id;
+        hash = 19 * hash + this.x;
+        hash = 19 * hash + this.y;
+        hash = 19 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -93,7 +105,24 @@ public class Location {
         if (this.y != other.y) {
             return false;
         }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
         return true;
+    }
+
+
+    
+    public String getConstructorString() {
+        return "§" + name + "§" + id + "§" + x + "§" + y;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
     
     
