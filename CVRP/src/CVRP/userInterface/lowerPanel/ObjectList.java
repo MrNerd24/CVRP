@@ -1,39 +1,49 @@
 package CVRP.userInterface.lowerPanel;
 
 import CVRP.algorithm.Rules;
-import CVRP.userInterface.UIPanel;
+import CVRP.userInterface.UIAPanel;
 import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.JScrollPane;
 
-public class ObjectList extends UIPanel {
-    Rules rules;
-    CarList carList;
-    LocationList locList;
-
+public class ObjectList extends UIAPanel {
+    
+    public Rules rules;
+    ScrollView view;
+    JScrollPane scroll;
+    
     public ObjectList(int width, int height, int left, int top, Rules rules) {
         super(width, height, left, top);
-        this.setBackground(new Color(120, 120, 120));
         this.rules = rules;
     }
-
+    
     @Override
     public void createContents() {
-        carList = new CarList(width, rules.getCars().size()*80, 0, 0, rules);
-        carList.setParentPanel(this);
-        carList.createContents();
-        this.add(carList);
+        view = new ScrollView(width, 0, 10, 0, rules);
+        view.createContents();
+        view.setParentPanel(this);
+        view.setBorder(null);
         
-        locList = new LocationList(width, rules.getLocations().size()*80, 0, carList.getPanelHeight(), rules);
-        locList.setParentPanel(this);
-        locList.createContents();
-        this.add(locList);
+        scroll = new JScrollPane(view);
+        scroll.setBounds(0, 0, width, height);
+        scroll.setBorder(null);
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        
+        
+        this.add(scroll);
+    }
+    
+    @Override
+    public void updateChildren() {  
+        scroll.setBounds(0, 0, width, height);
+        view.changeSize(width, 30);
     }
 
-    @Override
-    public void updateChildren() {
-        carList.changeSize(width, rules.getCars().size()*80);
-        locList.changeSize(width, rules.getLocations().size()*80);
-        locList.changePosition(0, carList.getPanelHeight());
-                
+    void updateContents() {
+        view.rules = rules;
+        view.updateContents();
     }
+
     
 }

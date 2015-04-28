@@ -3,17 +3,18 @@ package CVRP.userInterface;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
-public class Button extends UIPanel {
+public class Button extends UIAPanel {
 
     String name;
     ActionListener listener;
     JButton button;
 
-    public Button(int width, int height, int left, int top, String name, ActionListener listener, UIPanel parent) {
+    public Button(int width, int height, int left, int top, String name, ActionListener listener, UIAPanel parent) {
         super(width, height, left, top);
         this.name = name;
         this.listener = listener;
         this.setParentPanel(parent);
+        createContents();
     }
 
     @Override

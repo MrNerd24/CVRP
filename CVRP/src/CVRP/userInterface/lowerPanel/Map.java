@@ -3,17 +3,16 @@ package CVRP.userInterface.lowerPanel;
 import CVRP.algorithm.Rules;
 import CVRP.algorithm.Solver;
 import CVRP.objects.Location;
-import CVRP.userInterface.UIPanel;
+import CVRP.userInterface.UIAPanel;
 import CVRP.utils.TLArrayList;
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 
-public class Map extends UIPanel {
+public class Map extends UIAPanel {
 
-    Rules rules;
+    public Rules rules;
     Solver solver;
 
     public Map(int width, int height, int left, int top, Rules rules, Solver solver) {

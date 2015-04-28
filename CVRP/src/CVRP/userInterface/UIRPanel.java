@@ -1,20 +1,18 @@
 package CVRP.userInterface;
 
+import CVRP.interfaces.UIPanel;
+import java.awt.Dimension;
 import javax.swing.JPanel;
 
-public abstract class UIPanel extends JPanel {
+public abstract class UIRPanel extends JPanel implements UIPanel {
 
     protected int width;
     protected int height;
-    protected int left;
-    protected int top;
-    protected UIPanel parentPanel;
+    private UIPanel parentPanel;
 
-    public UIPanel(int width, int height, int left, int top) {
+    public UIRPanel(int width, int height) {
         this.width = width;
         this.height = height;
-        this.left = left;
-        this.top = top;
         this.setLayout(null);
     }
 
@@ -23,7 +21,7 @@ public abstract class UIPanel extends JPanel {
     public abstract void updateChildren();
 
     public void updateBounds() {
-        this.setBounds(left, top, width, height);
+        this.setPreferredSize(new Dimension(width, height));
     }
 
     public void changeSize(int x, int y) {
@@ -31,20 +29,6 @@ public abstract class UIPanel extends JPanel {
         this.height = y;
         updateBounds();
         updateChildren();
-    }
-
-    public void changePosition(int x, int y) {
-        this.left = x;
-        this.top = y;
-        updateBounds();
-        updateChildren();
-    }
-
-    public int getDistanceFromTop() {
-        if (parentPanel != null) {
-            return this.top + parentPanel.getDistanceFromTop();
-        }
-        return 0;
     }
 
     public int getPanelWidth() {
@@ -55,15 +39,15 @@ public abstract class UIPanel extends JPanel {
         return height;
     }
 
+    @Override
     public UIPanel getParentPanel() {
         return parentPanel;
     }
 
+    @Override
     public void setParentPanel(UIPanel parent) {
         this.parentPanel = parent;
         updateBounds();
     }
-    
-    
 
 }

@@ -1,8 +1,8 @@
 package CVRP.userInterface.upperMenu;
 
-import CVRP.userInterface.UIPanel;
+import CVRP.userInterface.UIAPanel;
 
-public class SaveRules extends UIPanel {
+public class SaveRules extends UIAPanel {
 
     public SaveRules(int width, int height, int left, int top) {
         super(width, height, left, top);

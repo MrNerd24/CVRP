@@ -1,8 +1,8 @@
 package CVRP.userInterface.upperMenu;
 
-import CVRP.userInterface.UIPanel;
+import CVRP.userInterface.UIAPanel;
 
-public class Settings extends UIPanel {
+public class Settings extends UIAPanel {
 
     public Settings(int width, int height, int left, int top) {
         super(width, height, left, top);

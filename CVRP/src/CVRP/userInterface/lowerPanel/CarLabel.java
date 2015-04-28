@@ -1,23 +1,27 @@
 package CVRP.userInterface.lowerPanel;
 
 import CVRP.objects.Car;
-import CVRP.userInterface.UIPanel;
+import CVRP.userInterface.MainPanel;
+import CVRP.userInterface.UIAPanel;
+import CVRP.userInterface.UIRPanel;
 import CVRP.userInterface.listeners.CarListener;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class CarLabel extends UIPanel {
+public class CarLabel extends JPanel {
 
     private Car car;
     private boolean displayed;
     private JTextField nameEdit;
     private JTextField weightEdit;
 
-    public CarLabel(int width, int height, int left, int top, Car car) {
-        super(width, height, left, top);
+    public CarLabel(Car car) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.car = car;
         this.displayed = true;
@@ -25,13 +29,8 @@ public class CarLabel extends UIPanel {
         this.weightEdit = new JTextField(String.valueOf(car.getMaxWeight()));
     }
 
-    @Override
     public void createContents() {
         display();
-    }
-
-    @Override
-    public void updateChildren() {
     }
 
     public void updateContents() {
@@ -58,6 +57,12 @@ public class CarLabel extends UIPanel {
         } else {
             displayed = true;
             display();
+        }
+        
+        if (displayed) {
+            MainPanel main = findMain();
+            main.resetSolver();
+            main.updateLower();
         }
     }
     
@@ -97,8 +102,24 @@ public class CarLabel extends UIPanel {
         weightEdit.setFont(sub);
         weightEdit.addActionListener(new CarListener(this));
         this.add(weightEdit);
+        
+        if (displayed) {
+            MainPanel main = (MainPanel) this.getParent().getParent().getParent().getParent().getParent().getParent().getParent();
+            main.updateLower();
+        }
+        
         this.revalidate();
         this.repaint();
     }
+    
+    public MainPanel findMain() {
+        Component parent = this.getParent();
+        while (!parent.getClass().equals(MainPanel.class)) {
+            parent = parent.getParent();
+        }
+        return (MainPanel) parent;
+    }
+    
+    
 
 }

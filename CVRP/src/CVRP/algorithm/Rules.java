@@ -25,13 +25,14 @@ public class Rules {
      * @param mutations Defines the max amount mutations in a dna.
      * @param difDec Defines how much the importance of the difference in the first generations decreases over the generations. Must be between 1 and 0, where number near 1 means very little decrease.
      */
-    public Rules(int difDis, int fitDis, int mutations, double difDec) {
+    public Rules(int difDis, int fitDis, int mutations, double difDec, int X0, int Y0) {
         this.difDis = difDis;
         this.fitDis = fitDis;
         this.mutations = mutations;
         this.difDec = difDec;
         cars = new TLArrayList<>();
         locations = new TLArrayList<>();
+        locations.add(new Location(0, X0, Y0));
     }
 
     /**

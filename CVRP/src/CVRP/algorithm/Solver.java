@@ -52,7 +52,7 @@ public class Solver {
         }
         latestGen = new Generation(latestGen, latestGen.getDifferenceImportance() * rules.getDifDec());
         latestGen.sortDNAs();
-        best = best.getFitness() > latestGen.getDNAs().get(0).getFitness() ? latestGen.getDNAs().get(0) : best;
+        best = best.getFitness() >= latestGen.getDNAs().get(0).getFitness() ? latestGen.getDNAs().get(0) : best;
     }
 
     public Rules getRules() {
@@ -61,7 +61,12 @@ public class Solver {
 
     public void setRules(Rules rules) {
         this.rules = rules;
+        reset();
+    }
+    
+    public void reset() {
         latestGen = null;
+        best = null;
     }
 
 }
