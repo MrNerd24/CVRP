@@ -98,7 +98,7 @@ public class DNA implements Comparable<DNA>, Cloneable {
         Random random = new Random();
         for (int i = 0; i < rules.getCars().size(); i++) {
             if (runningOrder.get(i) == null) {
-                runningOrder.set(i, new TLArrayList<>());
+                runningOrder.set(i, new TLArrayList<Location>());
             }
         }
         for (int i = 1; i < rules.getLocations().size(); i++) {
@@ -110,7 +110,7 @@ public class DNA implements Comparable<DNA>, Cloneable {
 
     private void createEmptyDNA() {
         for (int i = 0; i < rules.getCars().size(); i++) {
-            runningOrder.add(new TLArrayList<>());
+            runningOrder.add(new TLArrayList<Location>());
         }
     }
 
