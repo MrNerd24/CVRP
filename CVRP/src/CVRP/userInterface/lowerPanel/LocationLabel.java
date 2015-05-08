@@ -1,11 +1,9 @@
 package CVRP.userInterface.lowerPanel;
 
-import CVRP.algorithm.Rules;
 import CVRP.objects.Location;
 import CVRP.objects.Packet;
 import CVRP.userInterface.MainPanel;
 import CVRP.userInterface.listeners.LocationListener;
-import CVRP.userInterface.listeners.newLocationListener;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -16,6 +14,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * Panel that displays location's information and allows to edit.
+ * @author Juuso
+ */
 public class LocationLabel extends JPanel {
 
     private boolean displayed;
@@ -25,6 +27,7 @@ public class LocationLabel extends JPanel {
     private JTextField xEdit;
     private JTextField yEdit;
 
+    
     public LocationLabel(Location loc) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.loc = loc;
@@ -35,6 +38,9 @@ public class LocationLabel extends JPanel {
         yEdit = new JTextField(String.valueOf(loc.getY()));
     }
 
+    /**
+     * Method that is ran when a edit button is clicked.
+     */
     public void click() {
         String newName = nameEdit.getText();
         int newX = Integer.parseInt(xEdit.getText());

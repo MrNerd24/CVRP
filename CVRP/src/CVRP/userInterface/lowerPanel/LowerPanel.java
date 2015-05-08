@@ -6,13 +6,30 @@ import CVRP.userInterface.UIAPanel;
 import java.awt.ScrollPane;
 import javax.swing.JScrollPane;
 
+/**
+ *
+ * @author Juuso
+ */
 public class LowerPanel extends UIAPanel {
 
     private Map map;
     private ObjectList objectList;
+
+    /**
+     *
+     */
     public Rules rules;
     private Solver solver;
 
+    /**
+     *
+     * @param width
+     * @param height
+     * @param left
+     * @param top
+     * @param rules
+     * @param solver
+     */
     public LowerPanel(int width, int height, int left, int top, Rules rules, Solver solver) {
         super(width, height, left, top);
         this.rules = rules;
@@ -38,15 +55,26 @@ public class LowerPanel extends UIAPanel {
         objectList.changePosition((int) (width * 0.8), 0);
     }
 
+    /**
+     *
+     * @return
+     */
     public Rules getRules() {
         return rules;
     }
 
+    /**
+     *
+     * @param rules
+     */
     public void setRules(Rules rules) {
         this.rules = rules;
         map.setRules(rules);
     }
     
+    /**
+     *
+     */
     public void updateContents() {
         map.rules = rules;
         map.repaint();

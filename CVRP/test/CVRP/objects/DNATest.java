@@ -23,9 +23,8 @@ public class DNATest {
     public Rules rules;
 
     public DNATest() {
-        rules = new Rules(20, 20, 10, 0.99);
+        rules = new Rules(20, 20, 10, 0.99, 7, 8);
 
-        rules.getLocations().add(new Location(0, 7, 8));
         rules.getLocations().add(new Location(1, 10, 10));
         rules.getLocations().add(new Location(2, 10, 13));
         rules.getLocations().add(new Location(3, 16, 7));
@@ -156,7 +155,7 @@ public class DNATest {
         instance.calculateDifference(daddy, mommy);
         instance.calculateFitness();
         instance.calculateScore();
-        assertEquals(18, instance.getScore());
+        assertEquals(26, instance.getScore());
         
     }
 

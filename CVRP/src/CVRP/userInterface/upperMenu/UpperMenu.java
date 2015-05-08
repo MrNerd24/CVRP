@@ -7,16 +7,17 @@ import CVRP.userInterface.MainPanel;
 import CVRP.userInterface.TextField;
 import CVRP.userInterface.UIAPanel;
 import CVRP.userInterface.listeners.UpperMenuButtonListener;
-import java.awt.Color;
-import javax.swing.JTextField;
 
+/**
+ * Upper menu holds buttons for controlling the algorihm.
+ * @author Juuso
+ */
 public class UpperMenu extends UIAPanel {
 
     MainPanel main;
     UpperMenuButtonListener buttonListener;
     UIAPanel[] optionsBoxes;
     Integer activeBox;
-    DoGenerations genePanel;
 
     Button newBut;
     Button resBut;
@@ -31,6 +32,14 @@ public class UpperMenu extends UIAPanel {
     private Button ranBut;
     private TextField randomAmount;
 
+    /**
+     * Creates a new upperMenu
+     * @param width Width of the menu.
+     * @param height Height of the menu.
+     * @param left Distance from parent's left side
+     * @param top Distance from Parent's top side
+     * @param main MainPanel
+     */
     public UpperMenu(int width, int height, int left, int top, MainPanel main) {
         super(width, height, left, top);
         this.main = main;
@@ -44,8 +53,6 @@ public class UpperMenu extends UIAPanel {
         createResetButton();
         createRandomButton();
         createRandoms();
-//        createFileName();
-//        createSaveButton();
         createOpenList();
         createGenerationAmount();
         createDoGenerationsButton();
@@ -59,10 +66,8 @@ public class UpperMenu extends UIAPanel {
     public void updateChildren() {
         newBut.changePosition(getSpotFromLeft(0), getSpotFromTop(0));
         resBut.changePosition(getSpotFromLeft(0), getSpotFromTop(1));
-//        saveBut.changePosition(getSpotFromLeft(2), getSpotFromTop(1));
         genBut.changePosition(getSpotFromLeft(2), getSpotFromTop(1));
         genAmount.changePosition(getSpotFromLeft(2), getSpotFromTop(0));
-//        saveName.changePosition(getSpotFromLeft(2), getSpotFromTop(0));
         mutationAmount.changePosition(getSpotFromLeft(3), getSpotFromTop(0));
         difDisAmount.changePosition(getSpotFromLeft(4), getSpotFromTop(1));
         fitDisAmount.changePosition(getSpotFromLeft(4), getSpotFromTop(0));
@@ -72,10 +77,8 @@ public class UpperMenu extends UIAPanel {
 
         newBut.changeSize(getSpotWidth(), getSpotHeight());
         resBut.changeSize(getSpotWidth(), getSpotHeight());
-//        saveBut.changeSize(getSpotWidth(), getSpotHeight());
         genBut.changeSize(getSpotWidth(), getSpotHeight());
         genAmount.changeSize(getSpotWidth(), getSpotHeight());
-//        saveName.changeSize(getSpotWidth(), getSpotHeight());
         mutationAmount.changeSize(getSpotWidth(), getSpotHeight());
         difDisAmount.changeSize(getSpotWidth(), getSpotHeight());
         fitDisAmount.changeSize(getSpotWidth(), getSpotHeight());
@@ -87,6 +90,10 @@ public class UpperMenu extends UIAPanel {
         this.repaint();
     }
 
+    /**
+     * This method is ran when some of the buttons is clicked.
+     * @param buttonName Name of the button.
+     */
     public void buttonClick(String buttonName) {
         switch (buttonName) {
             case "New":
@@ -117,19 +124,19 @@ public class UpperMenu extends UIAPanel {
         main.updateLower();
     }
 
-    public int getSpotFromLeft(int spot) {
+    private int getSpotFromLeft(int spot) {
         return (int) (((width / 5) * spot) + (width / 5) * 0.1);
     }
 
-    public int getSpotFromTop(int spot) {
+    private int getSpotFromTop(int spot) {
         return (int) (((height / 2) * spot) + (height / 2) * 0.1);
     }
 
-    public int getSpotWidth() {
+    private int getSpotWidth() {
         return (int) ((width / 5) * 0.8);
     }
 
-    public int getSpotHeight() {
+    private int getSpotHeight() {
         return (int) ((height / 2) * 0.8);
     }
 
@@ -205,15 +212,16 @@ public class UpperMenu extends UIAPanel {
         int amount = 1;
         try {
             amount = getNumberFromField(genAmount);
+            if (amount <= 0) {
+                amount = 1;
+            }
         } catch (Exception e) {
         }
         main.solver.doGenerations(amount);
         main.updateLower();
     }
 
-    public void newAmount() {
 
-    }
 
     private int getNumberFromField(TextField field) {
         String text = field.getText();
@@ -237,6 +245,9 @@ public class UpperMenu extends UIAPanel {
         this.add(randomAmount);
     }
 
+    /**
+     * Assaigns new values for rules.
+     */
     public void updateRuleValues() {
         try {
             main.rules.setMutations(getNumberFromField(mutationAmount));

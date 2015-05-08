@@ -6,12 +6,27 @@ import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JScrollPane;
 
+/**
+ *
+ * @author Juuso
+ */
 public class ObjectList extends UIAPanel {
     
+    /**
+     *
+     */
     public Rules rules;
     ScrollView view;
     JScrollPane scroll;
     
+    /**
+     *
+     * @param width
+     * @param height
+     * @param left
+     * @param top
+     * @param rules
+     */
     public ObjectList(int width, int height, int left, int top, Rules rules) {
         super(width, height, left, top);
         this.rules = rules;

@@ -6,6 +6,10 @@ import CVRP.userInterface.lowerPanel.CarList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Listens the new car button
+ * @author Juuso
+ */
 public class newCarListener implements ActionListener {
 
     Rules rules;
@@ -23,6 +27,10 @@ public class newCarListener implements ActionListener {
         list.findMain().updateLower();
     }
 
+    /**
+     * Finds the next unused carID.
+     * @return
+     */
     public int getUnusedId() {
         boolean[] used = new boolean[10000];
         for (int i = 0; i < rules.getCars().size(); i++) {

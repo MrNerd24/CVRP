@@ -8,15 +8,26 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ *
+ * @author Juuso
+ */
 public class LocationList extends JPanel {
     Rules rules;
     private LocationLabel[] labels;
 
+    /**
+     *
+     * @param rules
+     */
     public LocationList(Rules rules) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.rules = rules;
     }
 
+    /**
+     *
+     */
     public void createContents() {
         
         labels = new LocationLabel[rules.getLocations().size()];
@@ -34,15 +45,25 @@ public class LocationList extends JPanel {
         this.add(button);
     }
 
-
+    /**
+     *
+     * @return
+     */
     public Rules getRules() {
         return rules;
     }
 
+    /**
+     *
+     * @param rules
+     */
     public void setRules(Rules rules) {
         this.rules = rules;
     }
 
+    /**
+     *
+     */
     public void updateContents() {
         this.removeAll();
         createContents();

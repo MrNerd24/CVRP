@@ -7,12 +7,24 @@ import java.awt.Container;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 
+/**
+ *
+ * @author Juuso
+ */
 public class ScrollView extends UIAPanel {
 
     Rules rules;
     CarList carList;
     LocationList locList;
 
+    /**
+     *
+     * @param width
+     * @param height
+     * @param left
+     * @param top
+     * @param rules
+     */
     public ScrollView(int width, int height, int left, int top, Rules rules) {
         super(width, height, left, top);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -40,8 +52,11 @@ public class ScrollView extends UIAPanel {
         this.setBounds(left, top, width, getChildHeight(this));
     }
 
-    
-    
+    /**
+     *
+     * @param panel
+     * @return
+     */
     public int getChildHeight(Container panel) {
         if (panel.getComponentCount() == 0) {
             return panel.getPreferredSize().height;

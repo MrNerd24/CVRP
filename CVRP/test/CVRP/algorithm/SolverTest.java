@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package CVRP.algorithm;
 
 import CVRP.objects.Car;
 import CVRP.objects.DNA;
 import CVRP.objects.Location;
 import CVRP.objects.Packet;
+import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -22,13 +22,12 @@ import static org.junit.Assert.*;
  * @author Juuso
  */
 public class SolverTest {
-    
-    public Rules rules;
-    
-    public SolverTest() {
-        rules = new Rules(100, 100, 10, 0.99);
 
-        rules.getLocations().add(new Location(0, 7, 8));
+    public Rules rules;
+
+    public SolverTest() {
+        rules = new Rules(100, 100, 10, 0.99, 7, 8);
+
         rules.getLocations().add(new Location(1, 10, 10));
         rules.getLocations().add(new Location(2, 10, 13));
         rules.getLocations().add(new Location(3, 16, 7));
@@ -69,19 +68,19 @@ public class SolverTest {
         rules.getCars().add(new Car(1, 20));
         rules.getCars().add(new Car(2, 20));
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -108,4 +107,65 @@ public class SolverTest {
         }
     }
     
+    // Remove @Test if you don't want this printed.
+    @Test
+    public void performanceTesting() {
+        // Generates and prints a csv file for excel.
+        System.out.println("");
+        for (int cars = 2; cars <= 2; cars++) {
+            System.out.println("cars: " + cars);
+            for (int mut = 10; mut <= 100; mut += 2) {
+                System.out.println("mut: " + mut);
+                System.out.println("");
+                System.out.print(",");
+                for (int i = 30; i <= 30; i += 5) {
+                    System.out.print(i + ",");
+                }
+                System.out.println("");
+                for (int pac = 5; pac <= 5; pac++) {
+                    System.out.print(pac + ",");
+                    for (int loc = 30; loc <= 30; loc += 5) {
+                        Rules rules = new Rules(1000, 1000, mut, 0.99, 250, 250);
+                        addLocations(rules, loc, pac);
+                        addCars(rules, cars);
+                        long time = averageGenerationTime(rules);
+                        System.out.print(time + ",");
+                    }
+                    System.out.println("");
+                }
+                System.out.println("");
+            }
+        }
+
+    }
+
+    public long averageGenerationTime(Rules rules) {
+        Solver solver = new Solver(rules);
+        long start = System.nanoTime();
+        solver.doGenerations(3000);
+        long end = System.nanoTime();
+        long ans = (end - start) / 3000;
+        return ans;
+    }
+
+    public void addLocations(Rules rules, int locations, int packets) {
+        Random random = new Random();
+        for (int i = 1; i <= locations; i++) {
+            Location loc = new Location(i, random.nextInt(500), random.nextInt(500));
+
+            for (int j = 0; j < packets; j++) {
+                Packet pac = new Packet(j, random.nextInt(20));
+                loc.getPackets().add(pac);
+            }
+
+            rules.getLocations().add(loc);
+        }
+    }
+
+    public void addCars(Rules rules, int cars) {
+        for (int i = 1; i <= cars; i++) {
+            rules.getCars().add(new Car(i, 100));
+        }
+    }
+
 }

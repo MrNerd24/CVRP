@@ -1,0 +1,3 @@
+**Viikko 8**
+
+Tällä viikolla sain kaikki tärkeät ominaisuudet ylämenusta toimimaan, ja ohjelmaa pystyy nyt käyttämään. Ajatuksena oli että karttoja voisi tallentaa ja lataa myöhemmin, mutta sen toteutus olisi ollut vähän liikaa, ja jätin sen pois. Lisäksi lisäsin mahdollisuuden luoda randomisti generoituja karttoja. Se helpottaa testausta huomattavasti. Demoon mennessä ohjelma oli jo palauttamis kunnossa.

@@ -163,73 +163,62 @@ public class TLArrayListTest {
 
     @Test
     public void testRemove_int() {
-        System.out.println("remove");
-        int index = 0;
-        TLArrayList instance = new TLArrayList();
-        Object expResult = null;
-        Object result = instance.remove(index);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        int index = 5;
+
+        list.remove(index);
+        assertEquals(false, list.contains(6));
     }
 
     @Test
     public void testContains() {
-        System.out.println("contains");
-        Object item = null;
-        TLArrayList instance = new TLArrayList();
-        boolean expResult = false;
-        boolean result = instance.contains(item);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+
+        assertEquals(true, list.contains(5));
+        assertEquals(false, list.contains(25));
     }
 
     @Test
     public void testClear() {
-        System.out.println("clear");
-        TLArrayList instance = new TLArrayList();
-        instance.clear();
-        fail("The test case is a prototype.");
+        list.clear();
+        assertEquals(false, list.contains(1));
+        assertEquals(false, list.contains(4));
+        assertEquals(false, list.contains(8));
+        assertEquals(false, list.contains(0));
     }
 
     @Test
     public void testIndexOf() {
-        System.out.println("indexOf");
-        Object item = null;
-        TLArrayList instance = new TLArrayList();
-        int expResult = 0;
-        int result = instance.indexOf(item);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        assertEquals(4, list.indexOf(5));
+        assertEquals(6, list.indexOf(7));
+        assertEquals(12, list.indexOf(13));
     }
 
     @Test
     public void testIsEmpty() {
-        System.out.println("isEmpty");
-        TLArrayList instance = new TLArrayList();
-        boolean expResult = false;
-        boolean result = instance.isEmpty();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        assertEquals(false, list.isEmpty());
+        list.remove(5);
+        assertEquals(false, list.isEmpty());
+        list.clear();
+        assertEquals(true, list.isEmpty());
     }
 
     @Test
     public void testToArray() {
-        System.out.println("toArray");
-        TLArrayList instance = new TLArrayList();
-        Object[] expResult = null;
-        Object[] result = instance.toArray();
-        assertArrayEquals(expResult, result);
-        fail("The test case is a prototype.");
+        Integer[] testArray = new Integer[19];
+        for (int i = 0; i < 19; i++) {
+            testArray[i] = i+1;
+        }
+        
+        assertArrayEquals(testArray, list.toArray());
     }
 
     @Test
     public void testSize() {
-        System.out.println("size");
-        TLArrayList instance = new TLArrayList();
-        int expResult = 0;
-        int result = instance.size();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        assertEquals(19, list.size());
+        list.remove(4);
+        list.remove(7);
+        assertEquals(17, list.size());
+        list.add(5);
+        assertEquals(18, list.size());
     }
 
     @Test
@@ -249,10 +238,16 @@ public class TLArrayListTest {
 
     @Test
     public void testShuffle() {
-        System.out.println("shuffle");
-        TLArrayList<Object> list = null;
         TLArrayList.shuffle(list);
-        fail("The test case is a prototype.");
+        boolean notSorted = false;
+        for (int i = 1; i < list.size(); i++) {
+            if (list.get(i) < list.get(i-1)) {
+                notSorted = true;
+            }
+        }
+        if (!notSorted) {
+            fail("List was sorted.");
+        }
     }
 
 }

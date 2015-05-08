@@ -26,13 +26,6 @@ public class Car {
         this.name = "Car" + id;
     }
 
-    public Car(String constructorString) {
-        String[] values = constructorString.split("$");
-        this.name = values[1];
-        this.id = Integer.parseInt(values[2]);
-        this.maxWeight = Integer.parseInt(values[3]);
-    }
-
     public int getId() {
         return id;
     }
@@ -56,10 +49,6 @@ public class Car {
     @Override
     public String toString() {
         return name;
-    }
-
-    public String getConstructorString() {
-        return "$" + name + "$" + this.id + "$" + this.maxWeight;
     }
 
     public String getName() {

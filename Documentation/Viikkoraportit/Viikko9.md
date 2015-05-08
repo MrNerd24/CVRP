@@ -1,0 +1,3 @@
+**Viikko 9**
+
+Tällä viikolla keskityin dokumentaatioon. Loin javadocin käyttöliittymä luokille ja vimeistelin testit jotka oli jääneet tekemättä projektin alkuvaiheessa. Testeihin tein myös koodia joka mittaa suoritusaikoja ja printtasi niitä modossa, joka oli mahdollista importtaa Exceliin testausdokumenttia varten. Käyristä tuli kuitenkin suht tylsän näköisiä koska kaikki käyttäytyi kovin lineaarisesti.

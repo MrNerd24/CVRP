@@ -10,6 +10,10 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * Lists all carLabels
+ * @author Juuso
+ */
 public class CarList extends JPanel {
 
     Rules rules;
@@ -20,6 +24,9 @@ public class CarList extends JPanel {
         this.rules = rules;
     }
 
+    /**
+     * Creates the list.
+     */
     public void createContents() {
         labels = new CarLabel[rules.getCars().size()];
         for (int i = 0; i < rules.getCars().size(); i++) {
@@ -44,6 +51,9 @@ public class CarList extends JPanel {
         this.rules = rules;
     }
 
+    /**
+     * updates the list's contents.
+     */
     public void updateContents() {
         this.removeAll();
         createContents();
@@ -51,6 +61,10 @@ public class CarList extends JPanel {
         this.repaint();
     }
 
+    /**
+     * Finds the mainpanel
+     * @return Mainpanel
+     */
     public MainPanel findMain() {
         Component parent = this.getParent();
         while (!parent.getClass().equals(MainPanel.class)) {

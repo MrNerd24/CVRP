@@ -64,6 +64,9 @@ public class Solver {
         reset();
     }
     
+    /**
+     * Resets the solver.
+     */
     public void reset() {
         latestGen = null;
         best = null;

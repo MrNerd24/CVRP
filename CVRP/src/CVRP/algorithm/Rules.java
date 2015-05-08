@@ -24,6 +24,8 @@ public class Rules {
      * @param fitDis The relation between difDis and Fitdis defines how much the algorithm tries to favour the one over the other. Bigger fitDis means more emphasis on the fitness in the first generations.
      * @param mutations Defines the max amount mutations in a dna.
      * @param difDec Defines how much the importance of the difference in the first generations decreases over the generations. Must be between 1 and 0, where number near 1 means very little decrease.
+     * @param X0 X-coordinate for the first location.
+     * @param Y0 X-coordinate for the first location.
      */
     public Rules(int difDis, int fitDis, int mutations, double difDec, int X0, int Y0) {
         this.difDis = difDis;

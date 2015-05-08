@@ -6,11 +6,15 @@ import CVRP.userInterface.lowerPanel.LocationList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Listener for adding a new location
+ * @author Juuso
+ */
 public class newLocationListener implements ActionListener {
 
     Rules rules;
     LocationList list;
-
+    
     public newLocationListener(Rules rules, LocationList list) {
         this.rules = rules;
         this.list = list;
@@ -22,6 +26,10 @@ public class newLocationListener implements ActionListener {
         list.updateContents();
     }
     
+    /**
+     * Finds the next unused Location ID.
+     * @return
+     */
     public int getUnusedId() {
         boolean[] used = new boolean[10000];
         for (int i = 0; i < rules.getLocations().size(); i++) {

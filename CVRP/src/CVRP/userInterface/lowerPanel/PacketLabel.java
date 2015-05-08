@@ -8,6 +8,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * Displays and allows to edit packet information
+ * @author Juuso
+ */
 public class PacketLabel extends JPanel {
 
     private JTextField weightEdit;
@@ -15,6 +19,10 @@ public class PacketLabel extends JPanel {
     private Packet pac;
     private boolean displayed = true;
 
+    /**
+     * Creates a new packetLable
+     * @param pac Packet that is displayed
+     */
     public PacketLabel(Packet pac) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.pac = pac;
@@ -26,6 +34,9 @@ public class PacketLabel extends JPanel {
         display();
     }
 
+    /**
+     * Method is ran when the edit button is clicked.
+     */
     public void click() {
         String newName = nameEdit.getText();
         int newWeight = Integer.parseInt(weightEdit.getText());
@@ -43,6 +54,9 @@ public class PacketLabel extends JPanel {
         
     }
 
+    /**
+     * Switches to a editing mode.
+     */
     public void edit() {
         displayed = false;
         this.removeAll();
@@ -63,6 +77,9 @@ public class PacketLabel extends JPanel {
         this.repaint();
     }
 
+    /**
+     * Switches to a display mode.
+     */
     public void display() {
         displayed = true;
         this.removeAll();

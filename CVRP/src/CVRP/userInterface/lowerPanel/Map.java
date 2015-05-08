@@ -10,11 +10,27 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 
+/**
+ *
+ * @author Juuso
+ */
 public class Map extends UIAPanel {
 
+    /**
+     *
+     */
     public Rules rules;
     Solver solver;
 
+    /**
+     *
+     * @param width
+     * @param height
+     * @param left
+     * @param top
+     * @param rules
+     * @param solver
+     */
     public Map(int width, int height, int left, int top, Rules rules, Solver solver) {
         super(width, height, left, top);
         this.rules = rules;
@@ -22,10 +38,18 @@ public class Map extends UIAPanel {
         this.setBackground(Color.white);
     }
 
+    /**
+     *
+     * @return
+     */
     public Rules getRules() {
         return rules;
     }
 
+    /**
+     *
+     * @param rules
+     */
     public void setRules(Rules rules) {
         this.rules = rules;
         this.repaint();

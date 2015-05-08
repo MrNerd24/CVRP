@@ -10,6 +10,10 @@ import CVRP.objects.Packet;
 import java.awt.Color;
 import java.util.Random;
 
+/**
+ * This panel holds the whole ui.
+ * @author Juuso
+ */
 public class MainPanel extends UIAPanel {
 
     public Rules rules;
@@ -17,6 +21,13 @@ public class MainPanel extends UIAPanel {
     public UpperMenu upper;
     public LowerPanel lower;
 
+    /**
+     * creates a new mainpanel
+     * @param width width of the panel
+     * @param height height of the panel
+     * @param left Distance from parent's left side
+     * @param top Distance from parent's top side.
+     */
     public MainPanel(int width, int height, int left, int top) {
         super(width, height, left, top);
         rules = new Rules(1000, 1000, 20, 0.99, 100, 100);
@@ -38,12 +49,18 @@ public class MainPanel extends UIAPanel {
         this.add(lower);
     }
 
+    /**
+     * Creates the children.
+     */
     @Override
     public void createContents() {
         createUpper();
         createLower();
     }
 
+    /**
+     * Updates the children's sizes.
+     */
     @Override
     public void updateChildren() {
         upper.changeSize(width, 140);
@@ -68,17 +85,27 @@ public class MainPanel extends UIAPanel {
         return random.nextInt(max);
     }
 
+    /**
+     * Updates the lower panel's content.
+     */
     public void updateLower() {
         lower.rules = rules;
         lower.updateContents();
     }
 
+    /**
+     * Resets the solver.
+     */
     public void resetSolver() {
         solver.reset();
     }
 
+    /**
+     * Creates a random map
+     * @param locations Number of locations
+     */
     public void randomMap(int locations) {
-        rules = new Rules(1000, 1000, 50, 0.99, r(), r());
+        rules = new Rules(1000, 1000, 20, 0.99, r(), r());
         int packetid = 0;
         for (int i = 1; i < locations; i++) {
             rules.getLocations().add(new Location(i, r(), r()));

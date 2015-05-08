@@ -27,14 +27,6 @@ public class Location {
         this.name = "Location" + id;
         packets = new TLArrayList<>();
     }
-    
-    public Location(String constructorString) {
-        String[] values = constructorString.split("§");
-        this.name = values[1];
-        this.id = Integer.parseInt(values[2]);
-        this.x = Integer.parseInt(values[3]);
-        this.y = Integer.parseInt(values[4]);
-    }
 
     public int getId() {
         return id;
@@ -109,12 +101,6 @@ public class Location {
             return false;
         }
         return true;
-    }
-
-
-    
-    public String getConstructorString() {
-        return "§" + name + "§" + id + "§" + x + "§" + y;
     }
 
     public String getName() {
